@@ -3,17 +3,14 @@
 
 import os
 import fnmatch
-
-def check (start_dir,file_name): 
-    for dirpath, dirs, files in os.walk(start_dir): # walk in path 
-        for single_file in files:
-            if fnmatch.fnmatch(single_file, file_name):
-                return True                         # return true to the function if file in the path
-            
+found = True
 start_dir = input ("Enter the path: ")
 file_name = input ("Enter file name: ")
-if check (start_dir,file_name):
-    print (os.path.join(start_dir, file_name))      # join file to the path
-else:
+for dirpath, dirs, files in os.walk(start_dir): # walk in path 
+    for single_file in files:
+        if fnmatch.fnmatch(single_file, file_name):     # check if the file is match
+            print (os.path.join(dirpath, file_name))    # print the joining of directory path and the file
+            found = False
+if found:
     print ("The file is not exist in this path!")
         
