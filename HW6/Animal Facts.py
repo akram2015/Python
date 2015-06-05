@@ -1,3 +1,5 @@
+# Akram Hussein
+
 class Animal:
     def __init__(self, name):
         self.name = name         # instance variable unique to each instance
